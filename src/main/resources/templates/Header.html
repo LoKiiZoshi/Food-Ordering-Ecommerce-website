@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1">
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <title>Royal Steak House Navbar</title>
+
+  <style>
+    /* Custom styles for navbar */
+    .navbar-nav .nav-link {
+      font-weight: bold;  /* Make font bold */
+      font-size: 1.3rem;  /* Increase font size */
+      color: white !important; /* White font color */
+      margin-right: 25px; /* Add space between nav links */
+      transition: color 0.3s ease-in-out; /* Add transition for hover effect */
+    }
+
+    .navbar-nav .nav-link:hover {
+      color:rgb(255, 0, 255);;   /* Change link color to cyan on hover */ 
+    }
+
+    .navbar-brand { 
+      font-size: 2rem;  /* Larger brand size */
+      color: cyan !important;  /* Cyan brand color */
+      margin-right: 40px; /* Add space to the right of the brand */
+      font-weight: bold; /* Make brand bold */
+    }
+
+    .navbar {
+      background-color: black;  /* Black background */
+      padding: 25px 15px;  /* Add padding to make navbar taller */
+    }
+
+    h4 { 
+      color: white;  /* Cyan color for the welcome message */
+      font-size: 2rem; /* Increase welcome message font size */
+      font-weight: bold; /* Make welcome message bold */
+    }
+
+    /* Style for the pink logout button */
+    button.btn-logout {
+      font-size: 1.3rem;  /* Larger font for logout button */
+      padding: 12px 20px; /* Increase size of the logout button */
+      font-weight: bold; /* Bold logout button */
+      color:white;;  /* Pink color for logout text */
+      background-color:rgb(255, 0, 255);;  /* Keep the button's background red */
+    }
+
+    /* Hover effect for logout button */
+    button.btn-logout:hover {
+      color:cyan;  /* Darker pink on hover */
+      background-color:rgb(255, 0, 255);; /* Slightly darker red background on hover */
+    }
+
+    .header-logo h4 {
+      font-weight: bold; /* Bold logo text */
+      color: white;
+      font-size: 1.5rem; /* Adjust size to match */
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm">
+  <div class="container-fluid">
+    <!-- LOGO -->
+    <div class="col-md-3">
+      <div class="header-logo">
+        <h4>
+          Royal STEAK HOUSE $<br> 
+          FRESH & TASTY BITES 
+        </h4>
+      </div>
+    </div>
+    <!-- /LOGO -->
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/DasboardHome">Home</a>   
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/order">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product">Add Products</a>   
+        </li>
+      </ul>
+      
+      <form class="d-flex" action="/logout" method="get">
+        <h4>welcome : [[${session.validuser.username}]]</h4>&nbsp;&nbsp;&nbsp;
+        <p th:if="${session.validuser == null}">Please log in.</p> 
+        <!-- Logout button with pink text -->
+        <button class="btn btn-logout" type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+</body>
+</html>

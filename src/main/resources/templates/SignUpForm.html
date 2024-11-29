@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/login/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+        }
+
+        .signup-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .signup-image {
+            flex: 1;
+            text-align: center;
+            padding-right: 50px;
+        }
+
+        .signup-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        .signup-image-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: rgb(255, 0, 255);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signup-form {
+            flex: 1;
+            padding-left: 50px;
+            border-left: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            color: rgb(255, 0, 255);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: rgb(255, 0, 255);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 10px 15px 45px;
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 5px;
+            background: #f9f9f9;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: rgb(255, 0, 255);
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .form-group .label-agree-term {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .form-group .label-agree-term span {
+            color: rgb(255, 0, 255);
+        }
+
+        .form-group.form-button {
+            text-align: center;
+        }
+
+        .form-submit {
+            background: rgb(255, 0, 255);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: rgb(255, 0, 255);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .signup-content {
+                flex-direction: column;
+            }
+
+            .signup-image, .signup-form {
+                padding: 20px 0;
+                border-left: none;
+            }
+
+            .signup-form {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="sign-up">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-image">
+                <!-- Signup Image -->
+                <figure><img src="./img/order1.jpg" alt=""></figure>
+                <a href="/login" class="signup-image-link">I am already a member</a>
+            </div>
+
+            <div class="signup-form">
+                <h2 class="form-title">Sign Up</h2>
+                <form method="POST" action="/newuserregister" class="register-form" id="register-form">
+                    
+                    <!-- Error message display -->
+                    <div><p style="color:red">[[${msg}]]</p></div>
+                    
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="firstName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="firstName" id="firstName" placeholder="First Name" 
+                               required minlength="2" pattern="[A-Za-z]+" title="First Name should be at least 2 letters and only contain letters"/>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="lastName"><i class="zmdi zmdi-account"></i></label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Last Name" 
+                               required minlength="2" pattern="[A-Za-z]+" title="Last Name should be at least 2 letters and only contain letters"/>
+                    </div>
+
+                    <!-- Username -->
+                    <div class="form-group">
+                        <label for="username"><i class="zmdi zmdi-account"></i></label>
+                        <input type="text" name="username" id="username" placeholder="Username" 
+                               required minlength="5" pattern="[A-Za-z0-9]+" title="Username must be at least 5 characters and contain only letters and numbers"/>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" name="password" id="password" placeholder="Password" 
+                               required minlength="8" title="Password should be at least 8 characters"/>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirmPassword"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Repeat your password" 
+                               required minlength="8" title="Password should be at least 8 characters"/>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="SignUp"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// JavaScript for password match validation
+document.getElementById('register-form').addEventListener('submit', function (e) {
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+    
+    if (password !== confirmPassword) {
+        e.preventDefault(); // Prevent form submission
+        alert("Passwords do not match");
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FRESHTASTYBITESHOUSEWEB</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+    <style>
+        /* Custom CSS for the new title and buttons */
+        .custom-title {
+            text-align: center;
+            color: rgb(255, 0, 255);
+            font-size: 23px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+        }
+
+        .custom-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .custom-buttons button {
+            background-color: rgb(255, 0, 255);
+            border: none;
+            padding: 15px 60px;
+            color: white;
+            font-size: 18px;
+            margin: 0 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .custom-buttons button:hover {
+            background-color: rgb(0, 0, 0); 
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <th:block th:insert="ClientHeader.html"></th:block>
+    <!-- /HEADER -->
+
+   
+      
+    <!-- STORE -->
+    <div id="store" class="col-md-12">
+        <!-- Add custom title -->
+        <h1 class="custom-title">Recommended Food Products</h1> 
+
+        <!-- Custom buttons -->
+        <div class="custom-buttons">
+            <h2>If You're Interested For more food Item suggestions, please add them to your cart.</h2>
+          <a href="/getcanclehome">  
+    <button type="button">Cancel</button>
+</a>
+        </div>
+
+        <!-- store top filter -->
+       
+           
+        <!-- /store top filter -->
+ 
+        <!-- store products -->
+        <div class="row">
+            <!-- product -->
+            <div th:each="p:${productList}" class="col-md-4 col-xs-6">
+                <div class="product">
+      <div class="product-img">
+      <img th:src="@{'/img/'+${p.imageUrl}}" alt="" width="400" height="350">
+      <div class="product-label">
+													<span class="sale">100%</span>
+													<span class="new">FRESH & TASTY</span>
+												</div>
+      </div>
+          <div class="product-label">
+                        <span class="sale">100%</span>
+                        <span class="new">FRESH & TASTY</span>
+                    </div>
+                </div>
+                <div class="product-body">
+                    <p class="product-category">[[${p.category}]]</p> 
+                    <h3 class="product-name"><a href="#">[[${p.title}]]</a></h3>
+                    <h4 class="product-price">RS : [[${p.price}]] <!-- <del class="product-old-price">RS:600.00</del> --></h4>
+                    <!-- <div class="product-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div> -->
+                   <!--  <div class="product-btns">
+                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                    </div> -->
+                </div>
+                <div class="add-to-cart">
+                    <a th:href="@{/addToCart(id=${p.id})}"><button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- /store products -->
+    </div>
+    <!-- /STORE -->
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <!-- Content here -->
+    </footer>
+    <!-- /FOOTER -->
+
+    <!-- jQuery Plugins -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>FRESHTASTYBITESHOUSEWEB</title>
+
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+		<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i>9865599770</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i>lokendarjoshi384@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i>Kathmandu Baneswar Chowk,Nepal</a></li>
+					</ul>
+					
+					<ul class="header-links pull-right">
+					
+						<li><a href="#"><i class="fa fa-rupee-sign">Rs</i>NRS</a></li>   
+						<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+    <i class="fa fa-user-o"></i> My Account
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: black;">
+    <a class="dropdown-item" href="/login"style="color: White;">
+      <i class="fa fa-sign-in"></i> Login
+    </a>
+    &nbsp;&nbsp;&nbsp;
+     <a class="dropdown-item" href="/" style="color: Red;">
+      <i class="fa fa-sign-out"></i> Logout
+    </a>
+</div>
+</li>
+					</ul>
+					
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
+
+			<!-- MAIN HEADER -->
+			
+<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+<div class="col-md-3">
+    <div class="header-logo">
+ 
+        <h4 style="color: white;">
+           Royal STEAK HOUSE $<br> 
+			FRESH & TASTY BITES 
+        </h4>
+    </div>
+</div>
+<!-- /LOGO -->
+
+						<!-- SEARCH BAR -->
+						<div class="col-md-6">
+							<div class="header-search">
+								<form action="/search" method="post">
+									<select class="input-select">
+										<option value="0">Search</option> 
+										<!-- <option value="1">Category 01</option>
+										<option value="1">Category 02</option> -->
+									</select>
+									<input class="input" name="search" placeholder="Search here">
+								<button class="search-btn">Search</button>
+								</form>
+							</div>
+						</div>
+						<!-- /SEARCH BAR -->
+
+						<!-- ACCOUNT -->
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+							
+								<!-- <!-- Wishlist -->
+								<!-- <div>
+									<a href="#">
+										<i class="fa fa-heart-o"></i>
+										<span>Your Wishlist</span>
+										<div class="qty">2</div>
+									</a>
+								</div> -->
+								<!-- /Wishlist -->
+ 
+								<!-- Cart -->
+							<div class="dropdown">
+								<a  class="dropdown-toggle" data-toggle="dropdown"
+									aria-expanded="true"> <i class="fa fa-shopping-cart"></i> <span>Your
+										Cart</span>
+									<div class="qty">[[${session.size}]]</div>
+								</a>
+								<div class="cart-dropdown">
+									<div th:each=" c:${session.cList}" class="cart-list">
+										<div class="product-widget">
+											 <div class="product-img">
+                                             <img th:src="@{'/img/' + ${c.product.imageUrl}}" alt="">
+                                             </div>
+
+											<div class="product-body">
+												<h3 class="product-name">
+													<a href="#">[[${c.product.title}]]</a>
+												</h3>
+												<h4 class="product-price">
+													<span class="qty">[[${c.quantity}]]x</span>RS:[[${c.product.price}]] &nbsp;&nbsp;&nbsp;&nbsp;RS:[[${c.subTotal}]]
+												</h4>
+											</div>
+											<a th:href="@{/removeCartFromDropdown(id=${c.id})}"><button class="delete" >
+												<i class="fa fa-close"></i>
+											</button></a>
+										</div>
+									</div>
+									<div class="cart-summary" > 
+										<small>[[${size}]] Item(s) selected</small>
+										<h5>SUBTOTAL: RS :[[${session.total}]]</h5> 
+									</div>
+									<div class="cart-btns">
+										<a href="/cart">View Cart</a> <a href="/checkout">Checkout <i
+											class="fa fa-arrow-circle-right"></i></a>
+									</div>
+								</div>
+							</div>
+							<!-- /Cart -->
+
+								<!-- Menu Toogle -->
+								<div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Menu</span>
+									</a>
+								</div>
+								<!-- /Menu Toogle -->
+							</div>
+						</div>
+						<!-- /ACCOUNT -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			</header> 
+</body>
+</html>

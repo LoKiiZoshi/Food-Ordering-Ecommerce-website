@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for input fields and textarea */
+        .form-control, .form-control-file {
+            transition: border-color 0.3s ease; /* Smooth transition for border color */
+        }
+
+        .form-control:hover, .form-control-file:hover {
+            border-color: rgb(255, 0, 255); /* Magenta border on hover */
+            box-shadow: 0 0 5px rgba(255, 0, 255, 0.5); /* Optional: Add a shadow effect */
+        }
+        .footer .text-white {
+            color: #fff !important;
+        }
+        .footer {
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+    padding: 40px 0; /* Add some padding */
+}
+
+.footer .footer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff00ff; /* Magenta color for headings */
+}
+
+.footer .footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+    color: #ffffff; /* White links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: #ff00ff; /* Magenta on hover */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.footer .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer .container {
+    max-width: 900px; /* Limit the width for better appearance */
+}
+    </style>
+</head>
+<body>
+    <!-- Include header if needed -->
+    <th:block th:insert="Header.Html"></th:block>
+    
+    <div class="container mt-5">
+        <h4 class="mb-4">Add Product</h4>
+        <form action="/AddProduct" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div> 
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+
+            <div class="form-group">
+                <label for="imageUrl">Image:</label>
+                <input type="file" class="form-control-file" id="imageUrl" name="image" required>
+            </div>
+
+            <button type="submit" style="background-color: rgb(255, 0, 255); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Add Product
+            </button>
+       
+        </form>
+    </div>
+    <br>
+      <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            <!-- Information Section -->
+            <div class="col-md-6 col-xs-12 mb-4">
+                <h3 class="footer-title">Information</h3>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    
+                </ul>
+            </div>           
+        </div>
+        <!-- Footer Bottom -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                 2024 Your Company | All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

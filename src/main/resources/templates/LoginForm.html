@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/login/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main CSS -->
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+        }
+
+        .signin-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .signin-image {
+            flex: 1;
+            text-align: center;
+            padding-right: 50px;
+        }
+
+        .signin-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        .signin-image-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: rgb(255, 0, 255);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signin-form {
+            flex: 1;
+            padding-left: 50px;
+            border-left: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            color: rgb(255, 0, 255);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: rgb(255, 0, 255);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 10px 15px 45px;
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 5px;
+            background: #f9f9f9;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: rgb(255, 0, 255);
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .form-group .label-agree-term {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .form-group .label-agree-term span {
+            color: rgb(255, 0, 255);
+        }
+
+        .form-group.form-button {
+            text-align: center;
+        }
+
+        .form-submit {
+            background: rgb(255, 0, 255);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: rgb(255, 0, 255); 
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .social-label {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .socials {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .socials li {
+            margin: 0 10px;
+        }
+
+        .socials li a {
+            color: rgb(255, 0, 255);
+            font-size: 24px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .signin-content {
+                flex-direction: column;
+            }
+
+            .signin-image, .signin-form {
+                padding: 20px 0;
+                border-left: none;
+            }
+
+            .signin-form {
+                padding-left: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <!-- Updated Image -->
+               <figure><img src="./img/order1.jpg" alt=""></figure>  
+                <a href="/Signup" class="signup-image-link">Create an account</a> 
+            </div> 
+
+            <div class="signin-form">
+                <h2 class="form-title">Customer Login</h2>  
+                <form method="POST" action="/login" class="register-form" id="login-form">
+                 <div><p style="color:red">[[${error}]]</p></div>
+                    <div class="form-group">
+                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="username" id="your_name" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" name="password" id="your_pass" placeholder="Password" />
+                    </div>
+                   
+                    
+                    <!--  <div class="g-recaptcha" data-sitekey="6Ld3M_EpAAAAAIRTadljyshZz-XkAcgtkV1Eeb7m">
+                    <!-- Submit Button -->
+                    <div class="form-group form-button">
+                        <input type="submit" name="login" id="signin" class="form-submit" value="Login" />
+                    </div>
+                </form>
+
+                <!-- <div class="social-login">
+                    <span class="social-label">Or login with</span>
+                    <ul class="socials">
+                        <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="#"><i class="zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

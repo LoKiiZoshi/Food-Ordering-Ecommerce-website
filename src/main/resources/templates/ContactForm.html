@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>FRESHTASTYBITESHOUSEWEB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        .bg-magenta {
+            background-color: rgb(255, 0, 255) !important; /* Magenta background */
+            color: white !important; /* White text for contrast */
+        }
+
+        .text-magenta {
+            color: rgb(255, 0, 255) !important; /* Magenta text */
+        }
+
+        .border-magenta {
+            border-color: rgb(255, 0, 255) !important; /* Magenta border */
+        }
+
+        .form-control-magenta {
+            border-color: rgb(255, 0, 255) !important; /* Magenta border for form controls */
+            box-shadow: inset 0 0 0 1px rgb(255, 0, 255) !important; /* Optional: magenta shadow for focus state */
+        }
+
+        .btn-magenta {
+            background-color: rgb(255, 0, 255) !important; /* Magenta button background */
+            border-color: rgb(255, 0, 255) !important; /* Magenta button border */
+            color: white !important; /* White text for button */
+        }
+
+        .btn-magenta:hover {
+            background-color: darkmagenta !important; /* Darker magenta on hover */
+            border-color: darkmagenta !important;
+        }
+         .footer {
+            background-color: #000; /* Black background */
+            color: white; /* White text */
+            padding: 10px;
+            text-align: center;
+        }
+        .footer .text-white {
+            color: #fff !important;
+        }
+        .footer {
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+    padding: 40px 0; /* Add some padding */
+}
+
+.footer .footer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff00ff; /* Magenta color for headings */
+}
+
+.footer .footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+    color: #ffffff; /* White links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: #ff00ff; /* Magenta on hover */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.footer .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer .container {
+    max-width: 900px; /* Limit the width for better appearance */
+}
+        
+    </style>
+</head>
+<body>
+    <th:block th:insert="Header.html"></th:block>
+
+    <div class="container-fluid">
+        <div class="card border-magenta">
+            <div class="card-header text-center bg-magenta"> 
+                <h1>Contact details</h1>
+            </div>
+            <div class="card-body">
+                <form action="/contact" method="post">
+                    <div class="row p-2">
+                        <div class="col-4">To Email</div>
+                        <div class="col-6">
+                            <input type="text" name="toEmail" class="form-control form-control-magenta">
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-4">Subject</div>
+                        <div class="col-6">
+                            <input type="text" name="subject" class="form-control form-control-magenta">
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-4">Message</div>
+                        <div class="col-6">
+                            <textarea rows="10" name="message" class="form-control form-control-magenta"></textarea>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-4"></div>
+                        <div class="col-6">
+                            <input type="submit" value="Send" class="btn btn-magenta">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center bg-magenta">*************</div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            <!-- Information Section -->
+            <div class="col-md-6 col-xs-12 mb-4">
+                <h3 class="footer-title">Information</h3>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    
+                </ul>
+            </div>           
+        </div>
+        <!-- Footer Bottom -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                 2024 Your Company | All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

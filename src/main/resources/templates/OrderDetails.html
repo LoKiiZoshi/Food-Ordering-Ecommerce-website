@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FRESHTASTYBITESHOUSEWEB</title> 
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Custom stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+ <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles */
+        .bg-magenta {
+            background-color: rgb(255, 0, 255) !important; /* Magenta background */
+            color: white; /* White text for contrast */
+        }
+
+        .bg-magenta-light {
+            background-color: rgba(255, 0, 255, 0.1); /* Light magenta background */
+        }
+
+        .text-magenta {
+            color: rgb(255, 0, 255) !important; /* Magenta text */
+        }
+
+        .input {
+            border: 1px solid rgb(255, 0, 255); /* Magenta border for input fields */
+            padding: 10px;
+        }
+
+        .input:focus {
+            border-color: rgb(255, 0, 255); /* Magenta border on focus */
+            box-shadow: 0 0 0 0.2rem rgba(255, 0, 255, 0.25); /* Magenta shadow on focus */
+        }
+
+        .btn-magenta {
+            background-color: rgb(255, 0, 255); /* Magenta background for buttons */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .btn-magenta:hover {
+            background-color: darkmagenta; /* Darker magenta on hover */
+        }
+
+        .card-footer {
+            background-color: rgb(255, 0, 255); /* Magenta background for footer */
+            color: white; /* White text for footer */
+        }
+         .footer .text-white {
+            color: #fff !important;
+        }
+        .footer {
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+    padding: 40px 0; /* Add some padding */
+}
+
+.footer .footer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff00ff; /* Magenta color for headings */
+}
+
+.footer .footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+    color: #ffffff; /* White links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: #ff00ff; /* Magenta on hover */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.footer .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer .container {
+    max-width: 900px; /* Limit the width for better appearance */
+}
+     
+    </style>
+</head>
+<body>
+    <th:block th:insert="header.html"></th:block>
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header text-center bg-magenta"> 
+                <h1>Orders List</h1>
+            </div>
+
+            <!-- SECTION -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <form action="/placeOrder" method="post">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <!-- Billing Details -->
+                                <div class="billing-details bg-magenta-light" th:object="${deliveryAddress}">
+                                    <div class="section-title">
+                                        <h3 class="title text-magenta">Delivery Address</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="firstName" th:field="*{firstName}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="lastName" th:field="*{lastName}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="email" name="email" th:field="*{email}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="address" th:field="*{address}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="city" th:field="*{city}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="country" th:field="*{country}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="zipCode" th:field="*{zipCode}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="tel" name="telephone" th:field="*{telephone}" readonly>
+                                    </div>
+                                     
+                                    <!-- <div class="form-group">
+                                        <div class="input-checkbox">
+                                            <div class="caption">
+                                               
+                                                <input class="input" type="password" name="password" placeholder="Enter Your Password">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- /Billing Details -->
+                                <!-- <!-- Order notes -->
+                               <!--  <div class="order-notes">
+                                    <textarea class="input" placeholder="Order Notes"></textarea>
+                                </div>  --> 
+                                <!-- /Order notes -->
+                            </div>
+
+                            <!-- Order Details -->
+                            <div class="col-md-5 order-details">
+                                <div class="section-title text-center">
+                                    <h3 class="title text-magenta">Orders</h3>
+                                </div>
+                                <div class="order-summary">
+                                    <div class="order-col">
+                                        <div>
+                                            <strong>PRODUCT</strong>
+                                        </div>
+                                        <div>
+                                            <strong>Name</strong>
+                                        </div>
+                                        <div>
+                                            <strong>Price</strong>
+                                        </div>
+                                        <div>
+                                            <strong>Quantity</strong>
+                                        </div>
+                                        <div>
+                                            <strong>TOTAL</strong>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!-- Products Loop -->
+              <div th:each="p, iterstat : ${deliveryAddress.productsIdList}" class="order-products">
+                      <div class="order-col row text-center align-items-center">
+        
+                  <!-- Product Image -->
+                     <div class="row">
+                         <img alt="" th:src="@{'/img/'+${p.imageUrl}}" width="50px"> 
+                     </div>
+
+        
+                      <!-- Product Title -->
+                       <div class="col-3">[[${p.title}]]</div>
+        
+                            <!-- Product Price -->
+                      <div class="col-2">Rs : [[${p.price}]]</div>
+        
+                    <!-- Product Quantity -->
+                   <div class="col-2">[[${deliveryAddress.quantity[iterstat.index]}]]</div>
+        
+                   <!-- Product Subtotal (Price * Quantity) -->
+                    <div class="col-2">
+                      Rs :  [[${p.price * deliveryAddress.quantity[iterstat.index]}]]
+                 </div>
+               </div>
+                   <hr>
+           </div>
+
+              <!-- Shipping -->
+            <div class="order-col row text-center">
+          <div class="col-6">
+              <strong>Shipping</strong>
+            </div>
+       <div class="col-6">
+        <strong>FREE</strong>
+    </div>
+  </div>
+
+<!-- Total -->
+<div class="order-col row text-center">
+    <div class="col-6">
+        <strong>Total</strong>
+    </div>
+    <div class="col-6">
+        <strong class="order-total">Rs : [[${deliveryAddress.total}]]</strong>
+    </div>
+     
+</div>
+</div>
+
+
+							<!-- /Order Details -->
+							
+							<br>
+							<br>
+							<br>
+							<a href="/contact" style="background-color: rgb(255, 0, 255); color: white; padding: 20px 200px; text-decoration: none; border-radius: 9px;">Accept Order or mail send</a> 
+                        </div>
+                        
+                    </form>
+                    
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+
+          
+            <div class="card-footer bg-magenta">*****</div>
+          
+    
+        </div>
+    </div>
+      <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            <!-- Information Section -->
+            <div class="col-md-6 col-xs-12 mb-4">
+                <h3 class="footer-title">Information</h3>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    
+                </ul>
+            </div>           
+        </div>
+        <!-- Footer Bottom -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                <p> 2024 Your Company | All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+      
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
